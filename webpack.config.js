@@ -11,6 +11,12 @@ module.exports = {
   module: {
     rules: [
       {
+        test:/\.(js|vue)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre', // en necesario que se ponga pre para que corra antes de babel y de esta forma no causa conflicto
+        include: [path.resolve(__dirname, './src')]
+      },
+      {
         test: /\.css$/,
         use: [
           'vue-style-loader',
