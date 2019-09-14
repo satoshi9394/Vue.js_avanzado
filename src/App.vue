@@ -1,12 +1,9 @@
 <template lang="pug">
   #app
     input(v-model="name")
-    p {{ name }}
+    input(v-model="lastName")
 
-
-    a(:href="url") Link
-
-
+    p {{ fullName }}
 
 </template>
 
@@ -16,9 +13,13 @@ export default {
   data () {
     return {
       name:"",
+      lastName:"",
 
-      url: 'https://platzi.com'
-
+    }
+  },
+  computed:{
+    fullName() {
+      return this .name + ' ' + this.lastName
     }
   }
 }
