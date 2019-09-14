@@ -1,13 +1,12 @@
 <template lang="pug">
   #app
-    p(v-show="showValue") {{ value }}
-    p(v-if="showValue") {{ value }}
-    p(v-else) {{ "vaya algo mas" }}
+    input(v-model="name")
+    p {{ name }}
 
-    p(v-else-if="true") {{ value }}
-    
-    ul
-      li(v-for="i in items") {{ i }}
+
+    a(:href="url") Link
+
+
 
 </template>
 
@@ -16,11 +15,9 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Hello word angel',
+      name:"",
 
-      showValue: false,
-      value: "Genial",
-      items: [1,2,3,4,5]
+      url: 'https://platzi.com'
 
     }
   }
