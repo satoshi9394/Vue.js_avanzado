@@ -1,10 +1,13 @@
 <template lang="pug">
   #app
-    img(src="./assets/logo.png")
     h1 {{ msg }}
-    div(class='container')
-      img(src="./assets/logo_platzi.png")
-      h1(class="Titulo") {{ name_form }}
+    p {{ 1 + 1 }}
+    p {{ 'Hola' + 'Mundo' }}
+    p {{ person.name }}
+    p {{ person.name.toUpperCase() }}
+    p {{ JSON.stringify(person.name) }}
+    p {{ true ? 'true' : 'false' }}
+
 </template>
 
 <script>
@@ -13,7 +16,9 @@ export default {
   data () {
     return {
       msg: 'Hello word angel',
-      name_form: "Registro estacion platzi" 
+      person:{
+        name:'angel',
+      }
     }
   }
 }
