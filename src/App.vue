@@ -25,6 +25,8 @@ export default {
     }
   },
 
+
+
   computed: {
     fullName () {
       return`${ this.name}${ this.last_name }`;
@@ -41,6 +43,11 @@ export default {
       } else {
         return'Birthday format doesn\'t match';
       }
+    }
+  },
+  watch: {
+    name (newVal, oldVal) {
+      console.log(newVal, oldVal)
     }
   }
 }
