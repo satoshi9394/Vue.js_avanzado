@@ -17,7 +17,7 @@
                 nav.level
                     .level-left
                         a.level-item
-                            span.icon.is-small link       
+                            span.icon.is-small(@click="selectTrack") link   
 </template>
 
 
@@ -25,6 +25,12 @@
 export default {
     props: {
         track: { type: Object, requiered: true }
+    },
+
+    methods: {
+        selectTrack() {
+            this.$emit('select', this.track.id)
+        }
     }
 
 
