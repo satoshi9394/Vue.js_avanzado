@@ -2,8 +2,8 @@
   #app
     pm-header
 
-    pm-notification(v-show="showNotification")
-      p(slot="body") No se encontraron resultados 
+    pm-notification(v-bind:notification="showNotification")
+      p(slot="body") {{ searchMessage1 }}
 
     pm-loader(v-show="isLoading")
     section.section(v-show="!isLoading")
@@ -17,7 +17,7 @@
           a.button.is-danger.is-large &times; 
       .container    
         p
-          small {{ searchMessage }}
+          small {{ searchMessage2 }}
       .container.result
         .columns.is-multiline
          .column.is-one-quarter(v-for="t in tracks")
@@ -61,9 +61,18 @@ export default {
   },
 
   computed:{
-    searchMessage () {
+    searchMessage1 () {
+      if (this.tracks.length >= 1) {
+        return `Se encontraron: ${ this.tracks.length }`
+      }else {
+        return `No se han encontrado resultados`
+      }
+
+    },
+    searchMessage2 () {
       return `Encontrados: ${ this.tracks.length }`
-    }
+    } 
+
   },
 
   watch: {
@@ -92,12 +101,6 @@ export default {
       this.selectedTrack = id
     }
   },
-  created () {
-    console.log('created...')
-  }, 
-  mounted () {
-    console.log('mounted')
-  }
 }
 </script>
 

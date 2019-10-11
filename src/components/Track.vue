@@ -31,6 +31,7 @@ export default {
         selectTrack() {
             this.$emit('select', this.track.id)
         }
+    
     }
 
 
