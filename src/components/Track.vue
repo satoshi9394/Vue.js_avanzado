@@ -17,7 +17,9 @@
                 nav.level
                     .level-left
                         a.level-item
-                            span.icon.is-small(@click="selectTrack") link   
+                            span(@click="selectTrack")  
+                                img(src="@/assets/emoticon_music.png")
+                            p Click me!   
 </template>
 
 
@@ -42,5 +44,9 @@ export default {
 </script>
 
 <style lang="css">
+
+ span img{
+     width: 10vh;
+ }
 
 </style>
