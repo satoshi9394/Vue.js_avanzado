@@ -1,5 +1,5 @@
 <template lang="pug">
-    .card
+    .card(v-if="track && track.album")
         .card-image
             figure.image.is-1by1
                 img(:src="track.album.images[0].url")
@@ -18,8 +18,12 @@
                     .level-left
                         a.level-item
                             span(@click="selectTrack")  
-                                img(src="@/assets/emoticon_music.png")
-                            p Click me!   
+                                img(src="@/assets/emoticon_music.png", alt='Escuchame!')
+                                p Escuchame!    
+                        a.level-item
+                            span(@click="goToTrack(track.id)")  
+                                img(src="@/assets/nota.png", alt='Visualizame!')
+                                p Visualizame!    
 </template>
 
 
@@ -34,6 +38,10 @@ export default {
             this.$emit('select', this.track.id)
 
             this.$bus.$emit('set-track', this.track)
+        },
+
+        goToTrack (id) {
+            this.$router.push({ name:'track', params: { id:id } })
         }
     
     }
@@ -46,7 +54,10 @@ export default {
 <style lang="css">
 
  span img{
-     width: 10vh;
+     width: 1.5em;
+ }
+ span p {
+     text-align: center;
  }
 
 </style>
