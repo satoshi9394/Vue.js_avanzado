@@ -10,7 +10,9 @@
           input.input.is-large(
             type="text", 
             placeholder="Buscar canciones", 
-            v-model="searchQuery")
+            v-model="searchQuery",
+            v-on:keyup.enter="search", alt="una estencion de la funcionalidad de vue"
+            )
           a.button.is-info.is-large(@click="search") Buscar
           a.button.is-danger.is-large &times; 
       .container    
