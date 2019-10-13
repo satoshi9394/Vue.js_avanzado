@@ -16,31 +16,32 @@
                 small {{ track.duration_ms | ms-to-mm }}
                 nav.level
                     .level-left
-                        a.level-item
+                        button.level-item.button.is-primary
                             span(@click="selectTrack")  
-                                img(src="@/assets/emoticon_music.png", alt='Escuchame!')
-                                p Escuchame!    
-                        a.level-item
+                                img(src="@/assets/emoticon_music.png", alt='Escuchame!')   
+                        button.level-item.button.is-warning
                             span(@click="goToTrack(track.id)")  
                                 img(src="@/assets/nota.png", alt='Visualizame!')
-                                p Visualizame!    
+
 </template>
 
 
 <script>
+import trackMixin from '@/mixins/track'
+
+
 export default {
+
+    mixins: [ trackMixin ],
+
     props: {
         track: { type: Object, requiered: true }
     },
 
     methods: {
-        selectTrack() {
-            this.$emit('select', this.track.id)
-
-            this.$bus.$emit('set-track', this.track)
-        },
-
         goToTrack (id) {
+            if (!this.track.preview_url) { return }
+
             this.$router.push({ name:'track', params: { id:id } })
         }
     
@@ -53,17 +54,12 @@ export default {
 
 <style lang="css">
 
- span {
-     display: flex;
 
- }   
 
  span img{
      display: block;
      width: 1.5em;
  }
- span p {
-     display: block;
- }
+
 
 </style>

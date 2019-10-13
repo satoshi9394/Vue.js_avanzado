@@ -1,9 +1,13 @@
 <template lang="pug">
   main
-    pm-notification(v-bind:notification="showNotification")
-      p(slot="body") {{ searchMessage1 }}
 
-    pm-loader(v-show="isLoading")
+    transition(name="move")
+      pm-notification(v-bind:notification="showNotification")
+        p(slot="body") {{ searchMessage1 }}
+
+    transition(name="move")
+      pm-loader(v-show="isLoading")
+
     section.section(v-show="!isLoading")
       nav.nav
         .container
@@ -22,6 +26,7 @@
         .columns.is-multiline
          .column.is-one-quarter(v-for="t in tracks")
           pm-Track(
+            v-blur="t.preview_url"
             v-bind:class= "{ 'is-active': t.id === selectedTrack  }",
             v-bind:track="t", 
             v-on:select="setSelectedTrack"

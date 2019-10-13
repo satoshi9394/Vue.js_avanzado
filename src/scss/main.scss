@@ -2,20 +2,12 @@
 
 
 
-/* .container{
-    display: flex;
-
+.move-enter-active, .move-leave-active {
+    transform: translateX(0);
+    transition: all .3s linear;
 }
 
-.Titulo{
-    font-family: Roboto bold;
-    color: #00bfd6;
-    
+.move-enter, .move-leave-to {
+    transform: translateX(100%);
 }
-
-.caja{
-    align-content: center;
-}
- */
-
 
