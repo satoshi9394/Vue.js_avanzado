@@ -26,33 +26,29 @@
 </template>
 
 
+
+
 <script>
 import trackMixin from '@/mixins/track'
 
-
 export default {
+  mixins: [trackMixin],
 
-    mixins: [ trackMixin ],
+  props: {
+    track: { type: Object, required: true }
+  },
 
-    props: {
-        track: { type: Object, requiered: true }
-    },
+  methods: {
+    goToTrack (id) {
+      if (!this.track.preview_url) { return }
 
-    methods: {
-        goToTrack (id) {
-            if (!this.track.preview_url) { return }
-
-            this.$router.push({ name:'track', params: { id:id } })
-        }
-    
+      this.$router.push({ name: 'track', params: { id } })
     }
-
-
-
+  }
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 
 
 
